@@ -39,18 +39,6 @@ resource "aws_ecr_lifecycle_policy" "default" {
       "action": {
         "type": "expire"
       }
-    },
-    {
-      "rulePriority": 3,
-      "description": "Expire images with the same tag",
-      "selection": {
-        "countType": "imageCountMoreThan",
-        "countNumber": 1,
-        "tagStatus": "any"
-      },
-      "action": {
-        "type": "expire"
-      }
     }
   ]
 }
