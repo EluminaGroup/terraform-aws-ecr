@@ -1,10 +1,10 @@
 
 resource "aws_ecr_repository_policy" "default" {
   repository = aws_ecr_repository.default.name
-  policy     = data.aws_ecr_lifecycle_policy_document.default.json
+  policy     = data.aws_iam_policy_document.default.json
 }
 
-data "aws_ecr_lifecycle_policy_document" "default" {
+data "aws_iam_policy_document" "default" {
   dynamic "statement" {
     for_each = length(try(var.trust_accounts, [])) > 0 ? [1] : []
 
